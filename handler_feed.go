@@ -32,7 +32,8 @@ func (apiCfg apiConfig) handlerCreateFeed(w http.ResponseWriter, r *http.Request
 		UserID:    user.ID,
 	})
 	if err != nil {
-		log.Fatal("Can't create feed", err)
+		// log.Fatal("Can't create feed", err)
+		respondWithError(w, 402, "Can't create feed")
 		return
 	}
 	respondWithJSON(w, 201, databaseFeedToFeed(feed))
